@@ -6,4 +6,7 @@ const find = (consulta) => Form.find(consulta)
 
 const post = (body) => Form.create(body)
 
-export default {getAll, find, post}
+const patch = (id,body) => Form.findByIdAndUpdate(id,body)
+const getId = (id) => Form.findById(id)
+
+export default {getAll, find, post, patch, getId}

@@ -9,4 +9,6 @@ route.get('/consulta',formController.find)
 
 route.post('/cadastrar',formController.post)
 
+route.patch('/atualizar/:id',formController.patch)
+
 export default route

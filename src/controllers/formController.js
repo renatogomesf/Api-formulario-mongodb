@@ -3,38 +3,49 @@ import formServices from "../services/formServices.js"
 class formController{
 
     async getAll(request,response){
-        const cadastros = await formServices.getAll()
-
-        response.status(200).send(cadastros)
+        try{
+            const cadastros = await formServices.getAll()
+    
+            response.status(200).send(cadastros)
+        }
+        catch{
+            response.status(500).send({error:"Erro de conexão"})
+        }
     }
+
 
     async find(request,response){
-
-        const consulta = request.body
-
-        const cadastro = await formServices.find(consulta)
-
-        response.status(200).send(cadastro)
+        try{
+            const consulta = request.body
+    
+            const cadastro = await formServices.find(consulta)
+    
+            response.status(200).send(cadastro)
+        }
+        catch{
+            response.status(500).send({error:"Erro de conexão"})
+        }
     }
+
 
     async post(request,response){
         try{
-            const {nome, sobrenome, dataNascimento, telefone, email} =request.body
+            const {nome, sobrenome, dataNascimento, telefone, email} = request.body
     
             if(!nome || !sobrenome || !dataNascimento || !telefone || !email){
-                response.status(400).send({message:"Submit all fields for registration"})
+                response.status(400).send({message:"Envie todos os campos para ser possível cadastrar"})
             }
 
-            const form = await formServices.post(request.body)
+            const cadastro = await formServices.post(request.body)
 
-            if(!form){
-                return response.status(400).send({message: "Error creating user"})
+            if(!cadastro){
+                return response.status(400).send({message: "Erro ao cadastrar"})
             }
 
             response.status(201).send({
-                message: "User created successfully",
+                message: "Cadastro criado com sucesso",
                 user:{
-                    id: form._id,
+                    id: cadastro._id,
                     nome,
                     sobrenome,
                     dataNascimento,
@@ -44,7 +55,29 @@ class formController{
             })
         }
         catch{
-            response.status(500).send({error:"Connection error"})
+            response.status(500).send({error:"Erro de conexão"})
+        }
+    }
+
+
+    async patch(request,response){
+        try{
+            const {nome, sobrenome, dataNascimento, telefone, email} = request.body
+
+            if(!nome && !sobrenome && !dataNascimento && !telefone && !email){
+                response.status(400).send({message:"Envie ao menos um campo para ser possível consultar"})
+            }
+
+            const id = request.params.id
+
+            await formServices.patch(id,request.body)
+
+            const cadastro = await formServices.getId(id)
+
+            response.status(200).send(cadastro)
+        }
+        catch{
+            response.status(500).send({error:"Erro de conexão"})
         }
     }
 }
