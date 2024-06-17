@@ -8,6 +8,15 @@ class formController{
         response.status(200).send(cadastros)
     }
 
+    async find(request,response){
+
+        const consulta = request.body
+
+        const cadastro = await formServices.find(consulta)
+
+        response.status(200).send(cadastro)
+    }
+
     async post(request,response){
         try{
             const {nome, sobrenome, dataNascimento, telefone, email} =request.body
