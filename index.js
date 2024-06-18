@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import formRoute from './src/routes/formRoute.js'
 import connectDatabse from './src/database/mongodb.js'
 
@@ -8,6 +9,7 @@ const port = process.env.PORT || 3000
 connectDatabse()
 
 app.use(express.json())
+app.use(cors())
 
 app.use('/formulario',formRoute)
 
