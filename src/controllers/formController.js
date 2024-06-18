@@ -44,7 +44,7 @@ class formController{
 
             response.status(201).send({
                 message: "Cadastro criado com sucesso",
-                user:{
+                cadastro:{
                     id: cadastro._id,
                     nome,
                     sobrenome,
@@ -74,7 +74,34 @@ class formController{
 
             const cadastro = await formServices.getId(id)
 
-            response.status(200).send(cadastro)
+            response.status(200).send({
+                message: "Cadastro atualizado com sucesso",
+                cadastro:{
+                    id: cadastro._id,
+                    nome,
+                    sobrenome,
+                    dataNascimento,
+                    telefone,
+                    email
+                }
+            })
+        }
+        catch{
+            response.status(500).send({error:"Erro de conexão"})
+        }
+    }
+
+
+    async delete(request,response){
+        try{
+            const id = request.params.id
+
+            const cadastroDeletado = await formServices.del(id)
+
+            response.status(200).send({
+                message: "Cadastro exluido com sucesso",
+                cadastroDeletado
+            })
         }
         catch{
             response.status(500).send({error:"Erro de conexão"})

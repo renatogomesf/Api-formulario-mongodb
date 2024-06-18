@@ -11,4 +11,6 @@ route.post('/cadastrar',formController.post)
 
 route.patch('/atualizar/:id',formController.patch)
 
+route.delete('/deletar/:id',formController.delete)
+
 export default route

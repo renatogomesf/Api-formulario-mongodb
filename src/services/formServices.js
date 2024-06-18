@@ -9,4 +9,6 @@ const post = (body) => Form.create(body)
 const patch = (id,body) => Form.findByIdAndUpdate(id,body)
 const getId = (id) => Form.findById(id)
 
-export default {getAll, find, post, patch, getId}
+const del = (id) => Form.findByIdAndDelete(id)
+
+export default {getAll, find, post, patch, getId, del}
