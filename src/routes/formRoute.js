@@ -5,7 +5,7 @@ const route = express.Router()
 
 route.get('/cadastros',formController.getAll)
 
-route.get('/consulta',formController.find)
+route.post('/consulta',formController.find)
 
 route.post('/cadastrar',formController.post)
 
