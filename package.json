@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "server": "nodemon --env-file .env index.js"
+    "server": "nodemon --env-file .env src/index.js"
   },
   "keywords": [],
   "author": "Renato Gomes",

@@ -2,6 +2,12 @@ import formServices from "../services/formServices.js"
 
 class formController{
 
+    ligarServidor(request,response){
+        response.status(200).send({
+            message: "Servidor rodando!"
+        })
+    }
+
     async getAll(request,response){
         try{
             const cadastros = await formServices.getAll()

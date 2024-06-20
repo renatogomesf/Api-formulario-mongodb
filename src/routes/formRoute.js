@@ -3,6 +3,8 @@ import formController from '../controllers/formController.js'
 
 const route = express.Router()
 
+route.get('/ligar-servidor',formController.ligarServidor)
+
 route.get('/cadastros',formController.getAll)
 
 route.post('/consulta',formController.find)
