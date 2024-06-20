@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import formRoute from './src/routes/formRoute.js'
-import connectDatabse from './src/database/mongodb.js'
+import formRoute from './routes/formRoute.js'
+import connectDatabse from './database/mongodb.js'
 
 const app = express()
 const port = process.env.PORT || 3000
