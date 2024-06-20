@@ -17,7 +17,6 @@ class formController{
     async find(request,response){
         try{
             const consulta = request.body
-            console.log(consulta)
     
             const cadastro = await formServices.find(consulta)
     
