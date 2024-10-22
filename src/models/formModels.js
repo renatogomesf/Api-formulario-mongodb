@@ -28,6 +28,6 @@ const formSchema = new mongoose.Schema({
     }
 })
 
-const Form = mongoose.model("Form",formSchema)
+const Form = mongoose.model("123",formSchema)
 
 export default Form
